@@ -19,8 +19,7 @@
       <div class="container header-nav">
         <nav class="header-nav">
           <a href="./index.html" class="logo"
-            ><span class="blu">Web</span>Studio</a
-          >
+            ><span class="blu">Web</span>Studio</a>
           <ul class="header-logo">
             <li class="item">
               <a href="./index.html" class="nav-link current">Студія</a>
@@ -54,7 +53,7 @@
       <section class="hero section">
         <div class="container">
           <h1 class="hero-h">Ефективні рішення для вашого бізнесу</h1>
-          <button type="button" class="hero-btm">Замовити послугу</button>
+          <button type="button" class="hero-btm" data-modal-open>Замовити послугу</button>
         </div>
       </section>
       <section class="features-section section">
@@ -121,12 +120,17 @@
           <ul class="title-img">
             <li class="item">
               <img src="./images/box1.jpg" width="370" alt="Дизайн" />
+              <div class="title-img-thumb">
+                <p class="title-img-text">Десктопні додатки</p>
+              </div>
             </li>
             <li class="item">
               <img src="./images/box2.jpg" width="370" alt="Додатки" />
+              <div class="title-img-thumb"><p class="title-img-text">Мобільні додатки</p></div>
             </li>
-            <li class="item">
+            <li class="item"> 
               <img src="./images/box3.jpg" width="370" alt="3д графіка" />
+              <div class="title-img-thumb"><p class="title-img-text">Дизайнерські рішення</p></div>
             </li>
           </ul>
         </div>
@@ -414,5 +418,15 @@
       </div>
       </div>
     </footer>
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button class="btm-modal" data-modal-close>
+          <svg class="modal-svg" wight="18" height="18">
+          <use href="./images/icons/icons.svg#icon-x"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <script src="./modal.js"></script>
   </body>
 </html>

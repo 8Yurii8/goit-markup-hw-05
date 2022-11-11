@@ -1,4 +1,5 @@
- :root {
+ :root { 
+    /* COLOR-START */
     --header-backgr-color: #ECECEC;
     --main-padge-text-color: #212121;
     --main-font-family: 'Roboto', sans-serif;
@@ -14,8 +15,14 @@
     --secondary-bgr:#2F303A;
      --bg-img: #C4C4C4;
     --icons-color: #AFB1B8;
-    --icons-border-color:#2196F3; } 
+    --icons-border-color:#2196F3; 
+/* COLOR-END}  */
 
+/* ANIMATION-START */
+--animation-overlay: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+/* ANIMATION-FINISH */
+}
 
 body {
 font-family:var(--main-font-family);
@@ -28,10 +35,14 @@ font-size: 14px;
 ul {list-style: none;
 padding: 0;
 margin: 0;}
+
 h1,h2,h3,p {
 padding: 0;
 margin: 0;
 }
+::before {
+box-sizing: border-box;}
+
 img {
     display: block;
     max-width: 100%;
@@ -58,6 +69,7 @@ border-bottom: 1px solid #ECECEC;}
 
 .header-logo {
 display: flex;
+
 }
 .header-logo .item {
     margin-left: 50px;
@@ -83,6 +95,7 @@ color: var(--color-btm-logo);
 font-family: var(--secondary-font-family);}
 
 .nav-link {
+    position: relative;
     display: block;
     font-weight: 500;
     line-height: calc(16 / 14);
@@ -90,6 +103,7 @@ font-family: var(--secondary-font-family);}
     color: var(--main-padge-text-color);
     padding-top: 32px;
     padding-bottom: 32px;
+    transition: color var(--animation-overlay);
     }
 
  .current {
@@ -99,6 +113,19 @@ font-family: var(--secondary-font-family);}
 .nav-link:hover,
 .nav-link:focus 
 {color: var(--color-btm-logo);}
+
+.nav-link.current::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--color-btm-logo);
+    }
 
 .ul-regist {
     display: flex;
@@ -129,7 +156,9 @@ font-family: var(--secondary-font-family);}
     text-decoration: none;
     font-style: normal;
     align-items: center;
-    gap: 10px;}
+    gap: 10px;
+    transition: color var(--animation-overlay);
+}
 
 .regist:hover,
 .regist:focus
@@ -182,7 +211,9 @@ font-family: var(--secondary-font-family);}
     background-color: var(--color-btm-logo);
     border-radius: 4px;
     border:inherit;
-    padding: 10px 32px;}
+    padding: 10px 32px;
+    transition: background-color var(--animation-overlay);}
+
 
 .hero-btm:hover,
 .hero-btm:focus {
@@ -233,9 +264,31 @@ font-family: var(--secondary-font-family);}
 .title-img .item:first-child 
 {margin-left: 0px;}
 
-    .title-img 
-    {display: flex; }
+.title-img 
+{display: flex; }
 
+.item {
+    position: relative;
+    transition: box-shadow var(--animation-overlay) ;
+}
+
+.title-img-thumb{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 27px;
+    background: rgba(47, 48, 58, 0.8); }
+  
+.title-img-text {
+    font-size: 14px;
+    line-height: calc(16 / 14);
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--color-with);
+    
+    
+}
 .section-title, .team {
     font-size: 36px;
     line-height: calc(42 / 36);
@@ -259,6 +312,36 @@ border-radius: 0px 0px 4px 4px;}
 .team-cards .iteam:first-child 
 {margin-left:0px;}
 
+.overlay-team {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding: 63px 24px;
+    background-color:rgba(33, 150, 243, 0.9);
+    transform: translateY(100%);
+    transition: transform var(--animation-overlay);
+}
+.overlay-text{
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: calc(28 / 18);
+    letter-spacing: 0.03em;
+    color: var(--color-with);
+    
+}
+.item-cards:hover .overlay {
+ transform: translateY(0%);
+}
 .team-name {
     margin-bottom:10px;
     font-weight: 500;
@@ -290,6 +373,8 @@ background-color: var(--color-with);}
     height: 100%;
     color: var(--icons-color);
     border-radius: 50%;
+    transition: color var(--animation-overlay),
+    background-color var(--animation-overlay);
 }
 
 .social-link:hover,
@@ -348,6 +433,7 @@ background-color: var(--color-with);}
     color: var(--footer-color-registr);
     text-decoration: none;
     font-style: normal;
+    transition: color var(--animation-overlay);
     } 
 
 .footer-regis:hover,
@@ -372,7 +458,8 @@ background-color: var(--color-with);}
     border: 1px solid var(--icons-color);
     color: var(--icons-color);
     border-radius: 4px;
-
+    transition: color var(--animation-overlay),
+    border var(--animation-overlay);
 }
 
 .clients-box:hover,
@@ -403,7 +490,10 @@ height: 44px;
 background-color: rgba(255, 255, 255, 0.1);;
 color: var(--color-with);
 border-radius: 50%;
-margin-left: 10px;}
+margin-left: 10px;
+transition: color var(--animation-overlay),
+background-color var(--animation-overlay);
+}
 
 .footer-social:first-child {
     margin-left: 0px;
@@ -429,12 +519,63 @@ margin-left: 10px;}
 
 /* footer */
 
+/* modal */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: opacity var(--animation-overlay);
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    min-width: 528px;
+    min-height: 581px;
+    background-color: var(--color-with);
+    
+    
+}
+.btm-modal {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: var(--color-with);
+    cursor: pointer;
+    
+}
+
+
+
+/* modal */
+
 /* main портфоліо */
 
 .filter-list
 {display: flex;
 justify-content: center;
-margin-bottom: 50px;}
+margin-bottom: 50px;
+}
 
 
 .filter-list .iteam
@@ -456,6 +597,9 @@ border-color: inherit;}
     line-height: 26px;
     background-color:var(--btm-portf-back) ;
     cursor: pointer;
+    transition: color var(--animation-overlay),
+    background-color var(--animation-overlay),
+    box-shadow var(--animation-overlay);
 }
 .btm:hover,
 .btm:focus {
@@ -507,3 +651,4 @@ text-decoration: none;
 }
 
  /*  portfolio  */
+
